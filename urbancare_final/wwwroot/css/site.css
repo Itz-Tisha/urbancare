@@ -1,4 +1,4 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
@@ -68,4 +68,169 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+/*
+  UrbanCare Minimal Design System
+  --------------------------------------------------
+  Provides a clean, professional baseline that complements Bootstrap.
+  Keeps the look minimal, consistent and readable across all pages.
+*/
+
+:root {
+  --uc-font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --uc-text: #1a1f36;
+  --uc-muted: #6b7280;
+  --uc-bg: #f7f8fa;
+  --uc-surface: #ffffff;
+  --uc-primary: #2563eb;   /* blue-600 */
+  --uc-primary-600: #1d4ed8; /* blue-700 */
+  --uc-border: #e5e7eb;
+  --uc-radius: 10px;
+  --uc-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+  --uc-shadow-sm: 0 2px 10px rgba(16, 24, 40, 0.06);
+  --uc-focus: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Typography & Layout Rhythm */
+html, body {
+  color: var(--uc-text);
+  background: var(--uc-bg);
+  font-family: var(--uc-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--uc-text);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+p, .lead {
+  color: var(--uc-text);
+}
+
+.text-muted, small, .form-text, .muted {
+  color: var(--uc-muted) !important;
+}
+
+/* Links */
+a { color: var(--uc-primary); text-decoration: none; }
+a:hover { color: var(--uc-primary-600); text-decoration: underline; }
+
+/* Containers & Sections */
+.container, .container-fluid {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+section, .section {
+  margin-block: 1.25rem;
+}
+
+/* Cards & Surfaces */
+.card,
+.uc-surface {
+  background: var(--uc-surface);
+  border: 1px solid var(--uc-border);
+  border-radius: var(--uc-radius);
+  box-shadow: var(--uc-shadow-sm);
+}
+
+.card-header { background: transparent; border-bottom: 1px solid var(--uc-border); font-weight: 600; }
+.card-footer { background: transparent; border-top: 1px solid var(--uc-border); }
+
+/* Buttons */
+.btn {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: var(--uc-primary);
+  border-color: var(--uc-primary);
+}
+.btn-primary:hover,
+.btn-primary:focus { background-color: var(--uc-primary-600); border-color: var(--uc-primary-600); }
+.btn-outline-primary { color: var(--uc-primary); border-color: var(--uc-primary); }
+.btn-outline-primary:hover { background: var(--uc-primary); color: #fff; }
+
+/* Forms */
+.form-control,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+  border: 1px solid var(--uc-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--uc-text);
+  padding: 0.5rem 0.75rem;
+}
+
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--uc-primary);
+  box-shadow: var(--uc-focus);
+  outline: none;
+}
+
+/* ASP.NET validation compatibility */
+.input-validation-error,
+.field-validation-error {
+  border-color: #ef4444 !important; /* red-500 */
+}
+.validation-summary-errors ul { margin: 0; padding-left: 1rem; }
+.validation-summary-errors li { color: #b91c1c; }
+
+/* Tables */
+.table {
+  border-color: var(--uc-border);
+}
+.table thead th {
+  background: #f9fafb;
+  border-bottom: 1px solid var(--uc-border);
+}
+.table tbody tr + tr td { border-top: 1px solid var(--uc-border); }
+
+/* Alerts */
+.alert { border-radius: 10px; border: 1px solid var(--uc-border); }
+.alert-primary { background: rgba(37, 99, 235, 0.08); color: var(--uc-primary); border-color: rgba(37, 99, 235, 0.25); }
+.alert-success { background: rgba(16, 185, 129, 0.08); color: #059669; border-color: rgba(16, 185, 129, 0.25); }
+.alert-danger { background: rgba(239, 68, 68, 0.08); color: #b91c1c; border-color: rgba(239, 68, 68, 0.25); }
+
+/* Navbar tweaks */
+.navbar {
+  border-bottom: 1px solid var(--uc-border);
+  background: #fff !important;
+}
+.navbar-brand { letter-spacing: -0.02em; }
+.navbar .nav-link { color: var(--uc-text); }
+.navbar .nav-link:hover { color: var(--uc-primary); }
+
+/* Shadows & Hover */
+.shadow-uc { box-shadow: var(--uc-shadow); }
+.shadow-uc-sm { box-shadow: var(--uc-shadow-sm); }
+
+/* Spacing utilities (lightweight) */
+.uc-stack > * + * { margin-top: 0.75rem; }
+.uc-gap-sm { gap: 0.5rem; }
+.uc-gap { gap: 0.75rem; }
+.uc-gap-lg { gap: 1.25rem; }
+
+/* Footer clean-up */
+.footer {
+  background: transparent;
+  color: var(--uc-muted);
 }

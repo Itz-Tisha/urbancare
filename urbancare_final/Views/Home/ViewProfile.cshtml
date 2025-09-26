@@ -25,17 +25,15 @@
     else if (User.IsInRole("Department") && Model.Department != null)
     {
         <div class="profile-card">
-            @if (!string.IsNullOrEmpty(Model.User.Photo))
+            @if (!string.IsNullOrEmpty(Model.Department?.Photo))
             {
-
-                <img src="@Model.User.Photo" alt="Profile Photo" class="profile-photo" />
+                <img src="@Model.Department.Photo" alt="Profile Photo" class="profile-photo" />
             }
-            <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
-            <p><strong>Email:</strong> @Model.Department.Email</p>
-            <p><strong>City:</strong> @Model.Department.City</p>
-            <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
-           
 
+            <p><strong>Department Name:</strong> @Model.Department?.DepartmentMaster?.Name </p>
+            <p><strong>Email:</strong> @Model.Department?.Email </p>
+            <p><strong>City:</strong> @Model.Department?.City </p>
+            <p><strong>Zip Code:</strong> @Model.Department?.ZipCode</p>
         </div>
     }
     <a class="nav-link" asp-controller="Home" asp-action="Edit"> Edit Profile</a>

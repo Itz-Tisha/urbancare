@@ -183,6 +183,7 @@ public class HomeController : Controller
                 dept.Email = model.Department.Email;
                 dept.City = model.Department.City;
                 dept.ZipCode = model.Department.ZipCode;
+                
 
                 // Departments may also have a photo, optional:
                 if (PhotoFile != null && PhotoFile.Length > 0)
