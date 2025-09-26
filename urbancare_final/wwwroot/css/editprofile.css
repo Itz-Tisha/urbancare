@@ -1,4 +1,95 @@
-﻿/* Edit Profile page-specific styles */
+﻿/* Edit Profile page styles (scoped, light theme) */
+
+:root {
+    --ep-card: #ffffff;
+    --ep-text: #0f172a;
+    --ep-muted: #475569;
+    --ep-border: rgba(15, 23, 42, 0.10);
+    --ep-ring: rgba(37, 99, 235, 0.25);
+    /* Use primary blue to match the rest of the app */
+    --ep-success: #2563eb; /* blue-600 */
+    --ep-success-700: #1d4ed8; /* blue-700 */
+    --ep-danger: #dc2626;
+    --ep-shadow: 0 12px 34px rgba(2, 6, 23, 0.08);
+    --ep-radius: 14px;
+}
+
+.edit-profile-container {
+    max-width: 720px;
+    margin: 24px auto 56px;
+    background: var(--ep-card);
+    border: 1px solid var(--ep-border);
+    border-radius: var(--ep-radius);
+    box-shadow: var(--ep-shadow);
+    padding: 24px;
+}
+
+.edit-profile-container h2 {
+    margin: 0 0 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ep-text);
+}
+
+/* Scope inputs to the Edit action form within the container */
+.edit-profile-container form[action*="Edit"] .form-group { margin-bottom: 16px; }
+
+.edit-profile-container form[action*="Edit"] label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--ep-text);
+}
+
+.edit-profile-container form[action*="Edit"] input.form-control {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--ep-border);
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--ep-text);
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.edit-profile-container form[action*="Edit"] input.form-control:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px var(--ep-ring);
+}
+
+/* Validation errors */
+.edit-profile-container .text-danger { color: var(--ep-danger); font-size: 13px; margin-top: 6px; display: block; }
+
+/* Save button (btn-success) */
+.edit-profile-container form[action*="Edit"] .btn.btn-success {
+    background: linear-gradient(180deg, var(--ep-success), var(--ep-success-700)) !important;
+    background-color: var(--ep-success) !important;
+    border-color: var(--ep-success-700) !important;
+    color: #fff !important;
+    padding: 12px 22px;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 120ms ease, filter 160ms ease;
+}
+
+.edit-profile-container form[action*="Edit"] .btn.btn-success:hover { transform: translateY(-2px); filter: brightness(1.03); }
+.edit-profile-container form[action*="Edit"] .btn.btn-success:active { transform: translateY(0); filter: brightness(0.98); }
+.edit-profile-container form[action*="Edit"] .btn.btn-success:disabled { opacity: 0.6; cursor: not-allowed; }
+
+@media (max-width: 640px) {
+    .edit-profile-container { padding: 18px; margin: 16px auto 48px; }
+    .edit-profile-container form[action*="Edit"] .btn.btn-success { width: 100%; }
+}
+
+/* Edit Profile page-specific styles */
 .edit-profile-container {
     max-width: 600px;
     margin: 40px auto;

@@ -1,4 +1,54 @@
-﻿/* Navbar global styles */
+﻿/* Global navbar polish (keeps Bootstrap structure) */
+
+:root {
+    --nb-text: #0f172a;        /* slate-900 */
+    --nb-muted: #475569;       /* slate-600 */
+    --nb-primary: #2563eb;     /* blue-600 */
+    --nb-border: rgba(15,23,42,0.08);
+    --nb-hover: #eef2ff;       /* indigo-50 */
+}
+
+header .navbar {
+    min-height: 64px;
+    border-bottom: 1px solid var(--nb-border);
+    backdrop-filter: saturate(180%) blur(6px);
+}
+
+header .navbar .container { max-width: 1200px; }
+
+/* Brand */
+header .navbar .navbar-brand {
+    color: var(--nb-text) !important;
+    letter-spacing: -0.01em;
+}
+
+/* Links */
+header .navbar .nav-link,
+header .navbar a.nav-link:link,
+header .navbar a.nav-link:visited {
+    color: var(--nb-muted) !important;
+    padding: 10px 12px !important;
+    border-radius: 8px;
+    transition: color 120ms ease, background-color 160ms ease;
+}
+
+header .navbar .nav-link:hover,
+header .navbar .nav-link:focus {
+    color: var(--nb-primary) !important;
+    background-color: var(--nb-hover);
+}
+
+/* Active-like emphasis for current page (optional utility) */
+header .navbar .nav-link.active { color: var(--nb-primary) !important; font-weight: 600; }
+
+/* Toggler icon visibility on light bg */
+header .navbar .navbar-toggler { border-color: var(--nb-border); }
+header .navbar .navbar-toggler-icon { filter: contrast(0.5); }
+
+/* Logout button alignment */
+header .navbar .btn { vertical-align: middle; }
+
+/* Navbar global styles */
 .navbar {
     background-color: #ffffff !important;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);

@@ -1,0 +1,70 @@
+/* Make Resolution page (scoped, light theme) */
+
+:root {
+    --mr-card: #ffffff;
+    --mr-text: #0f172a;
+    --mr-muted: #475569;
+    --mr-border: rgba(15, 23, 42, 0.10);
+    --mr-ring: rgba(37, 99, 235, 0.25);
+    --mr-primary: #2563eb;
+    --mr-primary-700: #1d4ed8;
+    --mr-danger: #dc2626;
+    --mr-shadow: 0 12px 34px rgba(2, 6, 23, 0.08);
+    --mr-radius: 14px;
+}
+
+h2 { max-width: 720px; margin: 16px auto; color: var(--mr-text); }
+
+form[action*="makeresolution"] {
+    max-width: 720px;
+    margin: 8px auto 56px;
+    padding: 24px;
+    background: var(--mr-card);
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius);
+    box-shadow: var(--mr-shadow);
+}
+
+form[action*="makeresolution"] .form-group { margin-bottom: 16px; }
+form[action*="makeresolution"] label { font-weight: 600; color: var(--mr-text); margin-bottom: 6px; display: block; }
+
+form[action*="makeresolution"] .form-control, 
+form[action*="makeresolution"] textarea.form-control {
+    border: 1px solid var(--mr-border);
+    border-radius: 10px;
+    color: var(--mr-text);
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+form[action*="makeresolution"] .form-control { padding: 12px 14px; }
+form[action*="makeresolution"] textarea.form-control { min-height: 140px; padding: 12px 14px; resize: vertical; }
+
+form[action*="makeresolution"] .form-control:focus, 
+form[action*="makeresolution"] textarea.form-control:focus {
+    outline: none;
+    border-color: var(--mr-primary);
+    box-shadow: 0 0 0 4px var(--mr-ring);
+}
+
+form[action*="makeresolution"] .text-danger { color: var(--mr-danger); font-size: 13px; margin-top: 6px; display: block; }
+
+/* Submit -> use blue theme like others */
+form[action*="makeresolution"] .btn.btn-success {
+    background: linear-gradient(180deg, var(--mr-primary), var(--mr-primary-700)) !important;
+    background-color: var(--mr-primary) !important;
+    border-color: var(--mr-primary-700) !important;
+    color: #fff !important;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: transform 120ms ease, filter 160ms ease;
+}
+form[action*="makeresolution"] .btn.btn-success:hover { transform: translateY(-2px); filter: brightness(1.03); }
+form[action*="makeresolution"] .btn.btn-success:active { transform: translateY(0); filter: brightness(0.98); }
+
+@media (max-width: 640px) {
+    form[action*="makeresolution"] { padding: 18px; margin: 8px auto 48px; }
+    form[action*="makeresolution"] .btn { width: 100%; }
+}
+
+

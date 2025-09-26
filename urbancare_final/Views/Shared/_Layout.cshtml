@@ -44,16 +44,22 @@
                                     <a class="nav-link" asp-controller="User" asp-action="ViewAllComplaintsByUser">View Complaints By User</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Home" asp-action="Edit">Profile</a>
+                                    <a class="nav-link" asp-controller="Home" asp-action="ViewProfile">view profile</a>
                                 </li>
+                                @* <li class="nav-item">
+                                    
+                                </li> *@
                             }
                             else if (User.IsInRole("Department"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link" asp-controller="Department" asp-action="ViewComplaint">View Complaints</a>
                                 </li>
-                                <li class="nav-item">
+                                @* <li class="nav-item">
                                     <a class="nav-link" asp-controller="Home" asp-action="Edit">Edit Profile</a>
+                                </li> *@
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Home" asp-action="ViewProfile">view profile</a>
                                 </li>
                             }
                         </ul>

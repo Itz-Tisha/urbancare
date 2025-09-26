@@ -1,0 +1,28 @@
+﻿@model urbancare_final.ViewModels.HomeViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/viewprofile.css" asp-append-version="true" />
+
+<section class="hero-section">
+    <h2 class="welcome-text">Welcome, @User.Identity.Name!</h2>
+    <p class="hero-subtext">Explore UrbanCare services and manage your profile efficiently.</p>
+
+    @if (User.IsInRole("Citizen") && Model.User != null)
+    {
+        <div class="profile-card">
+            <p><strong>Name:</strong> @Model.User.Name</p>
+            <p><strong>Email:</strong> @Model.User.Email</p>
+        </div>
+    }
+    else if (User.IsInRole("Department") && Model.Department != null)
+    {
+        <div class="profile-card">
+            <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
+            <p><strong>Email:</strong> @Model.Department.Email</p>
+            <p><strong>City:</strong> @Model.Department.City</p>
+            <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
+        </div>
+    }
+    <a class="nav-link" asp-controller="Home" asp-action="Edit">Profile</a>
+</section>

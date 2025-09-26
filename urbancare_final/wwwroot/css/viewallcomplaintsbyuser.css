@@ -1,127 +1,206 @@
-﻿body {
-    background: #f8fafc;
-    color: #111827;
+﻿/* Complaints-by-user table styles (scoped, safe for other pages) */
+
+:root {
+    --vcu-bg: #ffffff;
+    --vcu-text: #0f172a;
+    --vcu-muted: #475569;
+    --vcu-border: rgba(15, 23, 42, 0.10);
+    --vcu-border-strong: rgba(15, 23, 42, 0.16);
+    --vcu-row: #ffffff;
+    --vcu-row-alt: #f8fafc;
+    --vcu-hover: #eff6ff;
+    --vcu-primary: #2563eb;
+    --vcu-primary-600: #1d4ed8;
+    --vcu-warning: #d97706; /* amber-600 */
+    --vcu-warning-700: #b45309; /* amber-700 */
+    --vcu-danger: #dc2626; /* red-600 */
+    --vcu-danger-700: #b91c1c; /* red-700 */
+    --vcu-radius: 14px;
+    --vcu-shadow: 0 12px 34px rgba(2, 6, 23, 0.08);
 }
 
-h2 {
-    margin: 12px 0 16px 0;
-    font-weight: 700;
+h2 + table.table { margin-top: 14px; }
+
+/* Switch to CARD MODE to handle long statements gracefully */
+table.table { width: 100%; border-collapse: collapse; background: transparent; border: none; box-shadow: none; }
+table.table thead { display: none; }
+table.table tbody { display: grid; gap: 16px; }
+
+table.table tbody tr {
+    display: grid;
+    grid-template-columns: 1fr auto; /* content + actions */
+    row-gap: 10px;
+    column-gap: 12px;
+    background: var(--vcu-bg);
+    border: 1px solid var(--vcu-border);
+    border-radius: var(--vcu-radius);
+    box-shadow: var(--vcu-shadow);
+    padding: 14px 16px;
+}
+table.table tbody tr:hover { box-shadow: 0 16px 44px rgba(2,6,23,0.10); border-color: var(--vcu-border-strong); }
+
+table.table tbody td { border: 0; padding: 0; color: var(--vcu-text); }
+
+/* Statement */
+table.table tbody td:nth-child(1) {
+    grid-column: 1 / -1;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
-/* Table */
-table.table {
-    width: 100%;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-    table.table thead th {
-        background: #f3f4f6;
-        color: #111827;
-        font-weight: 600;
-        padding: 12px 14px;
-        border-bottom: 1px solid #e5e7eb;
-        text-align: left;
-        white-space: nowrap;
-    }
-
-    table.table tbody td {
-        padding: 12px 14px;
-        border-bottom: 1px solid #e5e7eb;
-        vertical-align: middle;
-        color: #111827;
-    }
-
-/* Zebra striping */
-.table.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #fafafa;
-}
-
-/* Actions cell: equal-size buttons with consistent spacing */
-.table tbody td:last-child {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* consistent spacing between buttons */
-    white-space: nowrap;
-}
-
-/* Buttons: same width/height, simple colors, no shadows */
-a.btn {
+/* Meta chips (type, date, department) */
+table.table tbody td:nth-child(2),
+table.table tbody td:nth-child(3),
+table.table tbody td:nth-child(4) {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    height: 36px; /* same height */
-    width: 120px; /* same width */
-    padding: 0 12px; /* ignored once width fixed, keeps text centered */
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 14px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    gap: 8px;
+    color: var(--vcu-muted);
+}
+table.table tbody td:nth-child(2)::before { content: "Type:"; font-weight: 700; color: var(--vcu-text); margin-right: 6px; }
+table.table tbody td:nth-child(3)::before { content: "Date:"; font-weight: 700; color: var(--vcu-text); margin-right: 6px; }
+table.table tbody td:nth-child(4)::before { content: "Department:"; font-weight: 700; color: var(--vcu-text); margin-right: 6px; }
+
+/* Actions cell */
+table.table tbody td:nth-child(5) { grid-column: 2 / 3; justify-self: end; align-self: center; white-space: nowrap; }
+
+/* Buttons */
+table.table .btn { border: none; border-radius: 10px; padding: 8px 12px; font-size: 13px; line-height: 1.2; }
+table.table .btn.btn-primary { background: linear-gradient(180deg, var(--vcu-primary), var(--vcu-primary-600)); color: #fff; }
+table.table .btn.btn-warning { background: linear-gradient(180deg, var(--vcu-warning), var(--vcu-warning-700)); color: #fff; }
+table.table .btn.btn-danger  { background: linear-gradient(180deg, var(--vcu-danger), var(--vcu-danger-700)); color: #fff; }
+table.table .btn:hover { filter: brightness(1.04); transform: translateY(-1px); transition: transform 120ms ease, filter 160ms ease; }
+table.table .btn:active { transform: translateY(0); filter: brightness(0.98); }
+table.table td .btn + .btn { margin-left: 8px; }
+
+@media (min-width: 992px) {
+    table.table tbody { gap: 18px; }
+    table.table tbody tr { padding: 16px 18px; }
 }
 
-    /* Primary */
-    a.btn.btn-primary {
-        background: #2563eb;
-        border-color: #2563eb;
+/* Root variables */
+:root {
+    --bg: #f7f9fc;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --primary: #2563eb;
+    --danger: #dc2626;
+    --warning: #f59e0b;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --radius: 10px;
+}
+
+/* Page background */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 24px;
+}
+
+/* Page heading */
+h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Table container */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+    /* Table header */
+    .table thead {
+        background: var(--primary);
         color: #fff;
     }
 
-        a.btn.btn-primary:hover,
-        a.btn.btn-primary:focus {
-            background: #1e4fd8;
-            border-color: #1e4fd8;
+        .table thead th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
         }
 
-    /* Warning */
-    a.btn.btn-warning {
-        background: #f59e0b;
-        border-color: #f59e0b;
-        color: #111827;
+    /* Table body */
+    .table tbody tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        transition: background 0.2s;
     }
 
-        a.btn.btn-warning:hover,
-        a.btn.btn-warning:focus {
-            background: #d97706;
-            border-color: #d97706;
-            color: #111827;
+        .table tbody tr:hover {
+            background: rgba(37, 99, 235, 0.05);
         }
 
-    /* Danger */
-    a.btn.btn-danger {
-        background: #ef4444;
-        border-color: #ef4444;
-        color: #fff;
+    .table tbody td {
+        padding: 12px 16px;
+        vertical-align: middle;
     }
 
-        a.btn.btn-danger:hover,
-        a.btn.btn-danger:focus {
-            background: #dc2626;
-            border-color: #dc2626;
-        }
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+}
 
-    /* Small variant still keeps same button size for consistency */
-    a.btn.btn-sm {
-        height: 36px;
-        width: 120px;
-        font-size: 14px;
+    .btn:hover {
+        transform: translateY(-1px);
     }
 
-/* Mobile: allow horizontal scroll if needed */
+.btn-primary {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.btn-warning {
+    background-color: var(--warning);
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: #fff;
+}
+
+.btn-sm {
+    padding: 4px 8px;
+    font-size: 13px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    table.table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+    body {
+        padding: 16px;
     }
 
-        table.table thead th,
-        table.table tbody td {
-            padding: 10px 12px;
-            font-size: 14px;
-        }
+    h2 {
+        font-size: 24px;
+    }
+
+    .table thead th, .table tbody td {
+        padding: 10px 12px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
+table.table thead {
+    outline: 3px solid red;
 }

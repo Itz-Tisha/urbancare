@@ -37,6 +37,25 @@ public class HomeController : Controller
         return View(model);
     }
 
+    public IActionResult ViewProfile()
+    {
+        var role = User.FindFirstValue(ClaimTypes.Role);
+        var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+        var model = new HomeViewModel { Role = role };
+
+        if (role == "Citizen")
+        {
+            model.User = _homeRepository.GetCitizenById(userId);
+        }
+        else if (role == "Department")
+        {
+            model.Department = _homeRepository.GetDepartmentById(userId);
+        }
+
+        return View(model);
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()

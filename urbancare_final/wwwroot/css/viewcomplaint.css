@@ -1,0 +1,94 @@
+/* Department - View Complaints (scoped table styles) */
+
+:root {
+    --vcmp-bg: #ffffff;
+    --vcmp-text: #0f172a;
+    --vcmp-muted: #475569;
+    --vcmp-border: rgba(15, 23, 42, 0.10);
+    --vcmp-border-strong: rgba(15, 23, 42, 0.16);
+    --vcmp-row: #ffffff;
+    --vcmp-row-alt: #f8fafc;
+    --vcmp-hover: #eff6ff;
+    --vcmp-primary: #2563eb;
+    --vcmp-primary-700: #1d4ed8;
+    --vcmp-radius: 14px;
+    --vcmp-shadow: 0 12px 34px rgba(2,6,23,0.08);
+}
+
+h2 { margin: 16px 0; color: var(--vcmp-text); }
+
+/* CARD MODE for large complaints */
+table.table { width: 100%; border-collapse: collapse; background: transparent; border: none; box-shadow: none; }
+table.table thead { display: none; }
+table.table tbody { display: grid; gap: 16px; }
+
+/* Each complaint becomes a card */
+table.table tbody tr {
+    display: grid;
+    grid-template-columns: 1fr auto; /* content + action */
+    row-gap: 10px;
+    column-gap: 12px;
+    background: var(--vcmp-bg);
+    border: 1px solid var(--vcmp-border);
+    border-radius: var(--vcmp-radius);
+    box-shadow: var(--vcmp-shadow);
+    padding: 14px 16px;
+}
+table.table tbody tr:hover { box-shadow: 0 16px 44px rgba(2,6,23,0.10); border-color: var(--vcmp-border-strong); }
+
+/* Reset cell borders and padding */
+table.table tbody td { border: 0; padding: 0; color: var(--vcmp-text); }
+
+/* Title (ProblemType) */
+table.table tbody td:nth-child(2) {
+    grid-column: 1 / -1;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Labels for clarity */
+table.table tbody td:nth-child(1)::before { content: "ID:"; font-weight: 700; color: var(--vcmp-text); margin-right: 6px; }
+table.table tbody td:nth-child(2)::before { content: "Problem Type:"; display: block; font-weight: 700; color: var(--vcmp-text); margin: 0 0 4px; }
+
+/* Description large block */
+table.table tbody td:nth-child(3) {
+    grid-column: 1 / -1;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    color: var(--vcmp-text);
+}
+table.table tbody td:nth-child(3)::before { content: "Problem:"; display: block; font-weight: 700; color: var(--vcmp-text); margin: 4px 0; }
+
+/* Meta: Submitted By and Date (columns 4 and 5) */
+table.table tbody td:nth-child(4),
+table.table tbody td:nth-child(5) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--vcmp-muted);
+}
+table.table tbody td:nth-child(4)::before { content: "Submitted By:"; font-weight: 700; color: var(--vcmp-text); margin-right: 6px; }
+table.table tbody td:nth-child(5)::before { content: "Date:"; font-weight: 700; color: var(--vcmp-text); margin-right: 6px; }
+
+/* ID as small badge (first column) */
+table.table tbody td:nth-child(1) {
+    justify-self: start;
+    color: var(--vcmp-muted);
+}
+
+/* Action button area (last column) */
+table.table tbody td:nth-child(6),
+table.table tbody td:nth-child(7) { grid-column: 2 / 3; justify-self: end; align-self: center; }
+table.table tbody td:nth-child(6)::before { content: "Action:"; font-weight: 700; color: var(--vcmp-text); margin-right: 8px; }
+
+/* Primary button */
+table.table .btn.btn-primary { background: linear-gradient(180deg, var(--vcmp-primary), var(--vcmp-primary-700)); color: #fff; border: none; padding: 10px 14px; border-radius: 10px; font-size: 14px; line-height: 1.2; transition: transform 120ms ease, filter 160ms ease; }
+table.table .btn.btn-primary:hover { transform: translateY(-1px); filter: brightness(1.03); }
+table.table .btn.btn-primary:active { transform: translateY(0); filter: brightness(0.98); }
+
+@media (min-width: 992px) {
+    table.table tbody { gap: 18px; }
+    table.table tbody tr { padding: 16px 18px; }
+}
+
+

@@ -1,58 +1,4 @@
 ﻿@* @model urbancare_final.ViewModels.HomeViewModel
-
-
-<h2>Welcome, @User.Identity.Name!</h2>
-
-
-<form asp-controller="Account" asp-action="Logout" method="post" class="mb-3">
-    @Html.AntiForgeryToken()
-    <button type="submit" class="btn btn-danger">Logout</button>
-</form>
-@if (User.IsInRole("Citizen") && Model.User != null)
-{
-
-    <p><strong>Name:</strong> @Model.User.Name</p>
-    <p><strong>Email:</strong> @Model.User.Email</p>
-    <a asp-controller="User" asp-action="MakeComplaint" class="btn btn-primary">
-        Make a Complaint
-    </a>
-    <a asp-controller="User" asp-action="ViewAllComplaintsByUser" class="btn btn-primary">
-        ViewAllComplaintsByUser
-    </a>
-
-    <a asp-controller="User" asp-action="ViewAllComplaints" class="btn btn-primary">
-        ViewAllComplaints
-    </a>
-    <a asp-controller="Home" asp-action="Edit" class="btn btn-warning">
-        Edit Profile
-    </a>
-
-}
-else if (User.IsInRole("Department") && Model.Department != null)
-{
-
-    <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
-    <p><strong>Email:</strong> @Model.Department.Email</p>
-    <p><strong>City:</strong> @Model.Department.City</p>
-    <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
-
-
-    <a asp-controller="Department" asp-action="ViewComplaint" class="btn btn-primary">
-        View  Complaints
-    </a>
-
-    <a asp-controller="Home" asp-action="Edit" class="btn btn-warning">
-        Edit Profile
-    </a>
-
-
-
-}
-
- *@
-
-
-@model urbancare_final.ViewModels.HomeViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -76,3 +22,195 @@ else if (User.IsInRole("Department") && Model.Department != null)
         <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
     </div>
 }
+
+
+@model urbancare_final.ViewModels.HomeViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+
+<section class="hero-section">
+    <h2 class="welcome-text">Welcome, @User.Identity.Name!</h2>
+    <p class="hero-subtext">Explore UrbanCare services and manage your profile efficiently.</p>
+
+    @if (User.IsInRole("Citizen") && Model.User != null)
+    {
+        <div class="profile-card">
+            <p><strong>Name:</strong> @Model.User.Name</p>
+            <p><strong>Email:</strong> @Model.User.Email</p>
+        </div>
+    }
+    else if (User.IsInRole("Department") && Model.Department != null)
+    {
+        <div class="profile-card">
+            <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
+            <p><strong>Email:</strong> @Model.Department.Email</p>
+            <p><strong>City:</strong> @Model.Department.City</p>
+            <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
+        </div>
+    }
+</section>
+
+<section id="features" class="features-section">
+    <h2>Features</h2>
+    <div class="feature-cards">
+        <div class="feature-card">
+            <h3>Profile Management</h3>
+            <p>Update your details easily and securely.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Service Requests</h3>
+            <p>Raise and track requests quickly.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Notifications</h3>
+            <p>Get instant updates on all activities.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about-section">
+    <h2>About Us</h2>
+    <p>
+        UrbanCare is a modern platform connecting citizens with government departments. We aim
+        to make service management easy, fast, and reliable for everyone.
+    </p>
+</section>
+
+<section id="contact" class="contact-section">
+    <h2>Contact</h2>
+    <p>Email: support@urbancare.com | Phone: +91 12345 67890</p>
+</section> *@
+
+
+
+
+@* @model urbancare_final.ViewModels.HomeViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/index.css" />
+
+<h2 class="welcome-text">Welcome, @User.Identity.Name!</h2>
+
+@if (User.IsInRole("Citizen") && Model.User != null)
+{
+    <div class="profile-card">
+        <p><strong>Name:</strong> @Model.User.Name</p>
+        <p><strong>Email:</strong> @Model.User.Email</p>
+    </div>
+}
+else if (User.IsInRole("Department") && Model.Department != null)
+{
+    <div class="profile-card">
+        <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
+        <p><strong>Email:</strong> @Model.Department.Email</p>
+        <p><strong>City:</strong> @Model.Department.City</p>
+        <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
+    </div>
+} *@
+
+
+@model urbancare_final.ViewModels.HomeViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+
+<section class="hero-section">
+    <h2 class="welcome-text">Welcome, @User.Identity.Name!</h2>
+    <p class="hero-subtext">Explore UrbanCare services and manage your profile efficiently.</p>
+
+    @* @if (User.IsInRole("Citizen") && Model.User != null)
+    {
+        <div class="profile-card">
+            <p><strong>Name:</strong> @Model.User.Name</p>
+            <p><strong>Email:</strong> @Model.User.Email</p>
+        </div>
+    }
+    else if (User.IsInRole("Department") && Model.Department != null)
+    {
+        <div class="profile-card">
+            <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
+            <p><strong>Email:</strong> @Model.Department.Email</p>
+            <p><strong>City:</strong> @Model.Department.City</p>
+            <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
+        </div>
+    } *@
+</section>
+
+<section id="features" class="features-section">
+    <h2>Features</h2>
+    <div class="feature-cards">
+        <div class="feature-card">
+            <h3>Profile Management</h3>
+            <p>Update your details easily and securely.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Service Requests</h3>
+            <p>Raise and track requests quickly.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Notifications</h3>
+            <p>Get instant updates on all activities.</p>
+        </div>
+    </div>
+</section>
+
+<section class="stats-section">
+    <div class="stat-card">
+        <div class="stat-value">12k+</div>
+        <div class="stat-label">Active Citizens</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">850+</div>
+        <div class="stat-label">Resolved Requests</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">24/7</div>
+        <div class="stat-label">Support Availability</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">15</div>
+        <div class="stat-label">Departments Onboarded</div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div>
+        <h2>Get things done faster with UrbanCare</h2>
+        <p class="hero-subtext">Raise service requests, track status, and receive updates—all in one place.</p>
+    </div>
+    @* <div class="cta-actions">
+        <a href="/User/MakeComplaint" class="btn btn-primary">Raise a Request</a>
+        <a href="/Home/ViewProfile" class="btn btn-ghost">View Profile</a>
+    </div> *@
+</section>
+
+<section class="testimonials-section">
+    <h2>What citizens say</h2>
+    <div class="testimonials">
+        <div class="testimonial-card">
+            <p>“Submitting a request took less than two minutes and I got updates instantly.”</p>
+            <div class="testimonial-author">— A. Sharma</div>
+        </div>
+        <div class="testimonial-card">
+            <p>“The interface is clean and everything I need is easy to find.”</p>
+            <div class="testimonial-author">— R. Kumar</div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about-section">
+    <h2>About Us</h2>
+    <p>
+        UrbanCare is a modern platform connecting citizens with government departments. We aim
+        to make service management easy, fast, and reliable for everyone.
+    </p>
+</section>
+
+<section id="contact" class="contact-section">
+    <h2>Contact</h2>
+    <p>Email: support@urbancare.com | Phone: +91 12345 67890</p>
+</section>
