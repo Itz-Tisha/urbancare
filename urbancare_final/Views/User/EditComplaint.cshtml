@@ -1,0 +1,54 @@
+﻿@model urbancare_final.Models.Problem
+<link rel="stylesheet" href="~/css/editcomplaint.css" />
+@{
+    ViewData["Title"] = "Edit Complaint";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-3">Edit Complaint</h2>
+
+<form asp-action="EditComplaint" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Statement" class="form-label"></label>
+        <textarea asp-for="Statement" class="form-control"></textarea>
+        <span asp-validation-for="Statement" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ProblemType" class="form-label"></label>
+        <input asp-for="ProblemType" class="form-control" />
+        <span asp-validation-for="ProblemType" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DepartmentMasterId" class="form-label">Department</label>
+        <select asp-for="DepartmentMasterId" asp-items="ViewBag.Departments" class="form-select"></select>
+        <span asp-validation-for="DepartmentMasterId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Current Photo</label><br />
+        @if (!string.IsNullOrEmpty(Model.Photo))
+        {
+            <img src="~/@Model.Photo" alt="Complaint Photo" style="width:120px;height:120px;" />
+        }
+        else
+        {
+            <span class="text-muted">No photo uploaded</span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Upload New Photo (optional)</label>
+        <input type="file" name="PhotoFile" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+    <a asp-action="ViewComplaint" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

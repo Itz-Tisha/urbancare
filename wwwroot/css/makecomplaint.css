@@ -1,0 +1,89 @@
+body, .container, .content {
+    background: #f7f9fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+form {
+    max-width: 520px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 36px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label, label[asp-for] {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input.form-control,
+select.form-control,
+textarea.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background: #f9f9f9;
+    transition: border 0.2s;
+}
+
+input.form-control:focus,
+select.form-control:focus,
+textarea.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.text-danger {
+    color: #e74c3c;
+    font-size: 0.95rem;
+    margin-top: 2px;
+    display: block;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 16px 6px;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    .btn-primary {
+        font-size: 0.98rem;
+        padding: 8px 10px;
+    }
+}

@@ -1,0 +1,85 @@
+.login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 32px 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 24px;
+    font-size: 2rem;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+.login-container form {
+    margin-bottom: 16px;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-weight: 500;
+    text-align: left;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    transition: border 0.2s;
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.login-container button[type="submit"] {
+    width: 100%;
+    padding: 10px 0;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.login-container button[type="submit"]:hover {
+    background: #0056b3;
+}
+
+.login-container .text-danger {
+    color: #e74c3c;
+    font-size: 0.95rem;
+    text-align: left;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.login-container p {
+    margin-top: 18px;
+    font-size: 1rem;
+}
+
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,117 @@
+﻿/* signupcss.css */
+
+/* Reset some base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Page background and font */
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #212529;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Page heading */
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Form container */
+form {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 0 auto 50px;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Form group spacing */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Inputs and selects */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    input:focus,
+    select:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+    }
+
+/* Validation message */
+.text-danger {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Submit button */
+button[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+        transform: translateY(-1px);
+    }
+
+/* Optional: Focused input outline */
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid rgba(0, 123, 255, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+    form {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+}

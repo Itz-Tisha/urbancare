@@ -1,0 +1,36 @@
+﻿@model List<urbancare_final.Models.Problem>
+<link rel="stylesheet" href="~/css/viewallcomplaints.css" />
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Your Complaints</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Statement</th>
+            <th>Type</th>
+            <th>Date Submitted</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Statement</td>
+                <td>@item.ProblemType</td>
+                <td>@item.DateSubmitted.ToShortDateString()</td>
+                <td>@item.DepartmentMaster?.Name</td>
+                <td>
+                    <a asp-controller="User" asp-action="ViewResolution" asp-route-id="@item.Id" class="btn btn-primary">
+                        View Resolution
+                    </a>
+                </td>
+               
+            </tr>
+           
+        }
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+﻿@model List<urbancare_final.Models.Resolution>
+<link rel="stylesheet" href="~/css/viewresolution.css" />
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Resolutions</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Statement</th>
+                <th>Response</th>
+                <th>Date</th>
+                <th>Department member</th>
+                <td>User name</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!string.IsNullOrEmpty(ViewBag.Message as string))
+            {
+                <p>@ViewBag.Message</p>
+            }
+
+            @foreach (var resolution in Model)
+            {
+                <tr>
+                    <td>@resolution.Problem.Statement</td>
+                    <td>@resolution.Response</td>
+                    <td>@resolution.Date</td>
+                    <td>@resolution.Department.user_Name</td>
+                    <td>@resolution.User.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No resolutions found for this complaint.</p>
+}
+

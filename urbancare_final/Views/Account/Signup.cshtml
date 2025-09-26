@@ -1,0 +1,61 @@
+﻿@model urbancare_final.Models.ViewModels.AuthViewModel
+
+@{
+    ViewData["Title"] = "Signup";
+}
+<link rel="stylesheet" href="~/css/signupcss.css" />
+
+<h2>Signup - @Model.Role</h2>
+
+<form asp-action="Signup" method="post">
+    <input type="hidden" asp-for="Role" />
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    @if (Model.Role == "Department")
+    {
+        <div class="form-group">
+            <label for="DepartmentMasterId">Select Department</label>
+            <select asp-for="DepartmentMasterId" asp-items="@(new SelectList(Model.DepartmentOptions, "Id", "Name"))" class="form-control">
+                <option value="">-- Select Department --</option>
+            </select>
+            <span asp-validation-for="DepartmentMasterId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="City"></label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ZipCode"></label>
+            <input asp-for="ZipCode" class="form-control" />
+            <span asp-validation-for="ZipCode" class="text-danger"></span>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Signup</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

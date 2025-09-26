@@ -1,0 +1,50 @@
+﻿
+
+@model urbancare_final.ViewModels.HomeViewModel
+<link rel="stylesheet" href="~/css/editprofile.css" />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="edit-profile-container">
+    <h2>Edit Profile</h2>
+    <form asp-action="Edit" method="post">
+        @if (Model.Role == "Citizen" && Model.User != null)
+        {
+            <input type="hidden" asp-for="User.Id" />
+            <div class="form-group">
+                <label asp-for="User.Name"></label>
+                <input asp-for="User.Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Email"></label>
+                <input asp-for="User.Email" class="form-control" />
+            </div>
+        }
+        else if (Model.Role == "Department" && Model.Department != null)
+        {
+            <input type="hidden" asp-for="Department.Id" />
+            <div class="form-group">
+                <label asp-for="Department.user_Name"></label>
+                <input asp-for="Department.user_Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Department.Email"></label>
+                <input asp-for="Department.Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Department.City"></label>
+                <input asp-for="Department.City" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Department.ZipCode"></label>
+                <input asp-for="Department.ZipCode" class="form-control" />
+            </div>
+        }
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+</div>

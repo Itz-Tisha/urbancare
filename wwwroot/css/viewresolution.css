@@ -1,0 +1,57 @@
+body, .container, .content {
+    background: #f7f9fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+p {
+    color: #555;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    margin-bottom: 32px;
+    overflow: hidden;
+}
+
+.table th, .table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+}
+
+.table th {
+    background: #f1f3f6;
+    color: #34495e;
+    font-weight: 600;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+@media (max-width: 600px) {
+    .table th, .table td {
+        padding: 8px 6px;
+        font-size: 0.95rem;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+}

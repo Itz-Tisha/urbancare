@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - urbancare_final</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/navbar.css" />
+
+</head>
+<body>
+    <header>
+        <!-- REMOVE or COMMENT OUT this block -->
+      
+        @{
+            var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+            var currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
+
+            var hideNavbar = (currentController == "Account" &&
+            (currentAction == "Login" || currentAction == "Signup" || currentAction == "ChooseRole"));
+        }
+
+        @if (!hideNavbar && User.Identity.IsAuthenticated)
+        {
+            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+                <div class="container">
+                    <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">UrbanCare</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            @if (User.IsInRole("Citizen"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="User" asp-action="MakeComplaint">Make Complaint</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="User" asp-action="ViewAllComplaints">All Complaints</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="User" asp-action="ViewAllComplaintsByUser">View Complaints By User</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Home" asp-action="Edit">Profile</a>
+                                </li>
+                            }
+                            else if (User.IsInRole("Department"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Department" asp-action="ViewComplaint">View Complaints</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Home" asp-action="Edit">Edit Profile</a>
+                                </li>
+                            }
+                        </ul>
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-outline-danger btn-sm">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        }
+
+
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @* <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - urbancare_final - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer> *@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

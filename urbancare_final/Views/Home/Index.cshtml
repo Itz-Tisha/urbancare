@@ -1,0 +1,78 @@
+﻿@* @model urbancare_final.ViewModels.HomeViewModel
+
+
+<h2>Welcome, @User.Identity.Name!</h2>
+
+
+<form asp-controller="Account" asp-action="Logout" method="post" class="mb-3">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+@if (User.IsInRole("Citizen") && Model.User != null)
+{
+
+    <p><strong>Name:</strong> @Model.User.Name</p>
+    <p><strong>Email:</strong> @Model.User.Email</p>
+    <a asp-controller="User" asp-action="MakeComplaint" class="btn btn-primary">
+        Make a Complaint
+    </a>
+    <a asp-controller="User" asp-action="ViewAllComplaintsByUser" class="btn btn-primary">
+        ViewAllComplaintsByUser
+    </a>
+
+    <a asp-controller="User" asp-action="ViewAllComplaints" class="btn btn-primary">
+        ViewAllComplaints
+    </a>
+    <a asp-controller="Home" asp-action="Edit" class="btn btn-warning">
+        Edit Profile
+    </a>
+
+}
+else if (User.IsInRole("Department") && Model.Department != null)
+{
+
+    <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
+    <p><strong>Email:</strong> @Model.Department.Email</p>
+    <p><strong>City:</strong> @Model.Department.City</p>
+    <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
+
+
+    <a asp-controller="Department" asp-action="ViewComplaint" class="btn btn-primary">
+        View  Complaints
+    </a>
+
+    <a asp-controller="Home" asp-action="Edit" class="btn btn-warning">
+        Edit Profile
+    </a>
+
+
+
+}
+
+ *@
+
+
+@model urbancare_final.ViewModels.HomeViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/index.css" />
+
+<h2 class="welcome-text">Welcome, @User.Identity.Name!</h2>
+
+@if (User.IsInRole("Citizen") && Model.User != null)
+{
+    <div class="profile-card">
+        <p><strong>Name:</strong> @Model.User.Name</p>
+        <p><strong>Email:</strong> @Model.User.Email</p>
+    </div>
+}
+else if (User.IsInRole("Department") && Model.Department != null)
+{
+    <div class="profile-card">
+        <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
+        <p><strong>Email:</strong> @Model.Department.Email</p>
+        <p><strong>City:</strong> @Model.Department.City</p>
+        <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
+    </div>
+}

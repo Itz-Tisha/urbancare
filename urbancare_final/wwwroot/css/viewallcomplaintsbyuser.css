@@ -1,0 +1,127 @@
+﻿body {
+    background: #f8fafc;
+    color: #111827;
+}
+
+h2 {
+    margin: 12px 0 16px 0;
+    font-weight: 700;
+}
+
+/* Table */
+table.table {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+    table.table thead th {
+        background: #f3f4f6;
+        color: #111827;
+        font-weight: 600;
+        padding: 12px 14px;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    table.table tbody td {
+        padding: 12px 14px;
+        border-bottom: 1px solid #e5e7eb;
+        vertical-align: middle;
+        color: #111827;
+    }
+
+/* Zebra striping */
+.table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fafafa;
+}
+
+/* Actions cell: equal-size buttons with consistent spacing */
+.table tbody td:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* consistent spacing between buttons */
+    white-space: nowrap;
+}
+
+/* Buttons: same width/height, simple colors, no shadows */
+a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px; /* same height */
+    width: 120px; /* same width */
+    padding: 0 12px; /* ignored once width fixed, keeps text centered */
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+    /* Primary */
+    a.btn.btn-primary {
+        background: #2563eb;
+        border-color: #2563eb;
+        color: #fff;
+    }
+
+        a.btn.btn-primary:hover,
+        a.btn.btn-primary:focus {
+            background: #1e4fd8;
+            border-color: #1e4fd8;
+        }
+
+    /* Warning */
+    a.btn.btn-warning {
+        background: #f59e0b;
+        border-color: #f59e0b;
+        color: #111827;
+    }
+
+        a.btn.btn-warning:hover,
+        a.btn.btn-warning:focus {
+            background: #d97706;
+            border-color: #d97706;
+            color: #111827;
+        }
+
+    /* Danger */
+    a.btn.btn-danger {
+        background: #ef4444;
+        border-color: #ef4444;
+        color: #fff;
+    }
+
+        a.btn.btn-danger:hover,
+        a.btn.btn-danger:focus {
+            background: #dc2626;
+            border-color: #dc2626;
+        }
+
+    /* Small variant still keeps same button size for consistency */
+    a.btn.btn-sm {
+        height: 36px;
+        width: 120px;
+        font-size: 14px;
+    }
+
+/* Mobile: allow horizontal scroll if needed */
+@media (max-width: 768px) {
+    table.table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+        table.table thead th,
+        table.table tbody td {
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+}

@@ -1,0 +1,27 @@
+﻿@model urbancare_final.Models.ViewModels.ResolutionViewModel
+<link rel="stylesheet" href="~/css/makeresolution.css" />
+@{
+    ViewData["Title"] = "Send Resolution";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Send Resolution</h2>
+
+<form asp-action="makeresolution" method="post">
+    <input type="hidden" asp-for="ProblemId" />
+
+    <div class="form-group">
+        <label asp-for="Response"></label>
+        <textarea asp-for="Response" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Response" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit Resolution</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

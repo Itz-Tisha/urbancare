@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Select Role";
+}
+<link rel="stylesheet" href="~/css/chooserole.css" />
+
+<div class="role-container">
+    <h2>Select Role</h2>
+
+    <a asp-action="Login" asp-route-role="Citizen" class="btn btn-primary">Citizen</a>
+    <a asp-action="Login" asp-route-role="Department" class="btn btn-secondary">Department</a>
+
+    <p>
+        Don’t have an account?
+        <a asp-action="Signup" asp-route-role="Citizen">Citizen Signup</a> |
+        <a asp-action="Signup" asp-route-role="Department">Department Signup</a>
+    </p>
+</div>

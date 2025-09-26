@@ -1,0 +1,28 @@
+﻿@model urbancare_final.Models.ViewModels.AuthViewModel
+<link rel="stylesheet" href="~/css/login.css" />
+
+<div class="login-container">
+    <h2>Login - @ViewBag.Role</h2>
+
+    <form asp-action="Login" method="post">
+        <input asp-for="Role" type="hidden" />
+
+        <div>
+            <label>Email:</label>
+            <input asp-for="Email" type="email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label>Password:</label>
+            <input asp-for="Password" type="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>
+        <a asp-action="ChooseRole">Back to Role Selection</a>
+    </p>
+</div>

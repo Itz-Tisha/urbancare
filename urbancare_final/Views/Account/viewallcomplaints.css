@@ -1,0 +1,141 @@
+﻿:root {
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: rgba(0, 0, 0, 0.08);
+    --primary: #2563eb;
+    --primary-600: #1e4fd8;
+    --row: #ffffff;
+    --row-alt: #f5f7fb;
+    --row-hover: #eef4ff;
+    --shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Page basics */
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+h2 {
+    margin: 12px 0 18px 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+}
+
+/* Table container look (works without extra wrapper) */
+table.table {
+    width: 100%;
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+    /* Header */
+    table.table thead th {
+        background: linear-gradient(180deg, #f0f4ff, #e9effe);
+        color: #111827;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        border-bottom: 1px solid var(--border);
+        padding: 14px 16px;
+        position: sticky;
+        top: 0; /* keeps header visible if table overflows */
+        z-index: 1;
+        white-space: nowrap;
+    }
+
+    /* Cells */
+    table.table tbody td {
+        padding: 14px 16px;
+        vertical-align: middle;
+        color: var(--text);
+        border-bottom: 1px solid var(--border);
+    }
+
+/* Stripes (compatible with Bootstrap's .table-striped) */
+.table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--row-alt);
+}
+
+.table.table-striped tbody tr:nth-of-type(even) {
+    background-color: var(--row);
+}
+
+/* Hover */
+.table.table-striped tbody tr:hover {
+    background-color: var(--row-hover);
+}
+
+/* Action column buttons */
+.table a.btn.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    line-height: 1.2;
+    transition: transform 0.05s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+    text-decoration: none;
+}
+
+    .table a.btn.btn-primary:hover,
+    .table a.btn.btn-primary:focus {
+        background-color: var(--primary-600);
+        border-color: var(--primary-600);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(37, 99, 235, 0.3);
+    }
+
+/* Make last cell (actions) a bit tighter */
+.table tbody td:last-child {
+    white-space: nowrap;
+}
+
+/* Responsive: horizontal scroll on small screens */
+@media (max-width: 768px) {
+    table.table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+        table.table thead th,
+        table.table tbody td {
+            padding: 12px 14px;
+            font-size: 14px;
+        }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+/* Optional dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0f172a;
+        --card: #0b1220;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --border: rgba(255, 255, 255, 0.08);
+        --row: #0b1220;
+        --row-alt: #0e1728;
+        --row-hover: #0f1d34;
+        --shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+    }
+
+    table.table thead th {
+        background: linear-gradient(180deg, #0f1b33, #0d1a30);
+        color: #e5e7eb;
+    }
+}

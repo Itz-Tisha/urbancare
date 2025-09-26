@@ -1,0 +1,50 @@
+﻿@model IEnumerable<urbancare_final.Models.Problem>
+<link rel="stylesheet" href="~/css/viewcomplaint.css" />
+@{
+    ViewData["Title"] = "View Complaints";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Complaints Assigned to Your Department</h2>
+
+@if (!Model.Any())
+{
+    <p>No complaints assigned yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Submitted By</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var complaint in Model)
+            {
+                <tr>
+                    <td>@complaint.Id</td>
+                    <td>@complaint.ProblemType</td>
+                    <td>@complaint.Statement</td>
+                    <td>@complaint.User?.Name</td>
+                    <td>@complaint.DateSubmitted</td>
+                    <td>
+                        <a asp-controller="Department" asp-action="makeresolution" asp-route-problemId="@complaint.Id" class="btn btn-primary">
+                            Send Solution
+                        </a>
+                        
+                    </td>
+                   
+                </tr>
+
+               
+            }
+        </tbody>
+    </table>
+}

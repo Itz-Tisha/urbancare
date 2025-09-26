@@ -1,0 +1,73 @@
+body, .container, .content {
+    background: #f7f9fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.welcome-text {
+    color: #2c3e50;
+    font-weight: 700;
+    margin: 36px 0 28px 0;
+    text-align: center;
+    font-size: 2.1rem;
+}
+
+.profile-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    max-width: 420px;
+    margin: 0 auto 32px auto;
+    padding: 28px 22px;
+    text-align: left;
+}
+
+.profile-card p {
+    font-size: 1.1rem;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    margin: 8px 6px 0 0;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background: #e0a800;
+    color: #212529;
+}
+
+@media (max-width: 600px) {
+    .profile-card {
+        padding: 14px 4px;
+    }
+    .welcome-text {
+        font-size: 1.3rem;
+    }
+    .btn {
+        font-size: 0.98rem;
+        padding: 8px 10px;
+    }
+}
