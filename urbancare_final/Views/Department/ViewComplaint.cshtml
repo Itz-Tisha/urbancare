@@ -31,7 +31,14 @@ else
                 <tr>
                     <td>@complaint.Id</td>
                     <td>@complaint.ProblemType</td>
-                    <td>@complaint.Statement</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(complaint.Photo))
+                        {
+                            var path = complaint.Photo?.TrimStart('~','/');
+                            <img src="@Url.Content($"~/{path}")" alt="Complaint photo" class="complaint-photo" />
+                        }
+                        <div class="statement-text">@complaint.Statement</div>
+                    </td>
                     <td>@complaint.User?.Name</td>
                     <td>@complaint.DateSubmitted</td>
                     <td>

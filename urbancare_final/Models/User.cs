@@ -16,6 +16,8 @@ namespace urbancare_final.Models
         [Required]
         public string Password { get; set; }
 
+        public string Photo { get; set; }
+
         public ICollection<Problem> Problems { get; set; }
 
         public ICollection<Resolution> Resolutions { get; set; }

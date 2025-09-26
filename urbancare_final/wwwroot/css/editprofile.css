@@ -1,6 +1,6 @@
 ﻿/* Edit Profile page styles (scoped, light theme) */
 
-:root {
+ :root {
     --ep-card: #ffffff;
     --ep-text: #0f172a;
     --ep-muted: #475569;
@@ -15,24 +15,24 @@
 }
 
 .edit-profile-container {
-    max-width: 720px;
+    max-width: 760px;
     margin: 24px auto 56px;
-    background: var(--ep-card);
+    background: linear-gradient(180deg, #ffffff, #fafcff);
     border: 1px solid var(--ep-border);
-    border-radius: var(--ep-radius);
+    border-radius: 18px;
     box-shadow: var(--ep-shadow);
-    padding: 24px;
+    padding: 26px 24px;
 }
 
 .edit-profile-container h2 {
-    margin: 0 0 16px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     color: var(--ep-text);
 }
 
 /* Scope inputs to the Edit action form within the container */
-.edit-profile-container form[action*="Edit"] .form-group { margin-bottom: 16px; }
+.edit-profile-container form[action*="Edit"] .form-group { margin-bottom: 14px; }
 
 .edit-profile-container form[action*="Edit"] label {
     display: block;
@@ -45,25 +45,27 @@
     width: 100%;
     padding: 12px 14px;
     border: 1px solid var(--ep-border);
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 15px;
     color: var(--ep-text);
     background-color: #fff;
     box-sizing: border-box;
-    transition: border-color 160ms ease, box-shadow 160ms ease;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 120ms ease;
 }
 
 .edit-profile-container form[action*="Edit"] input.form-control:focus {
     outline: none;
     border-color: #2563eb;
     box-shadow: 0 0 0 4px var(--ep-ring);
+    transform: translateY(-1px);
 }
 
 /* Validation errors */
 .edit-profile-container .text-danger { color: var(--ep-danger); font-size: 13px; margin-top: 6px; display: block; }
 
 /* Save button (btn-success) */
-.edit-profile-container form[action*="Edit"] .btn.btn-success {
+.edit-profile-container form[action*="Edit"] .btn.btn-success,
+.edit-profile-container .btn.btn-success {
     background: linear-gradient(180deg, var(--ep-success), var(--ep-success-700)) !important;
     background-color: var(--ep-success) !important;
     border-color: var(--ep-success-700) !important;
@@ -71,13 +73,14 @@
     padding: 12px 22px;
     font-size: 15px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: transform 120ms ease, filter 160ms ease;
+    transition: transform 120ms ease, filter 160ms ease, box-shadow 160ms ease;
+    box-shadow: 0 10px 22px rgba(37,99,235,.18);
 }
 
 .edit-profile-container form[action*="Edit"] .btn.btn-success:hover { transform: translateY(-2px); filter: brightness(1.03); }
@@ -85,18 +88,13 @@
 .edit-profile-container form[action*="Edit"] .btn.btn-success:disabled { opacity: 0.6; cursor: not-allowed; }
 
 @media (max-width: 640px) {
-    .edit-profile-container { padding: 18px; margin: 16px auto 48px; }
+    .edit-profile-container { padding: 18px; margin: 16px auto 48px; border-radius: 16px; }
     .edit-profile-container form[action*="Edit"] .btn.btn-success { width: 100%; }
 }
 
 /* Edit Profile page-specific styles */
 .edit-profile-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* keep new styling; remove old duplicate smaller card */
 }
 
     .edit-profile-container h2 {
@@ -127,29 +125,11 @@
         transition: border-color 0.3s ease;
     }
 
-        .edit-profile-container input.form-control:focus {
-            border-color: #28a745;
-            outline: none;
-            box-shadow: 0 0 3px rgba(40, 167, 69, 0.3);
-        }
+        .edit-profile-container input.form-control:focus { }
 
-    .edit-profile-container button.btn-success {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        font-size: 1rem;
-        font-weight: 600;
-        background-color: #28a745;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        cursor: pointer;
-        margin-top: 10px;
-    }
+    .edit-profile-container button.btn-success { }
 
-        .edit-profile-container button.btn-success:hover {
-            background-color: #218838;
-        }
+        .edit-profile-container button.btn-success:hover { }
 
 /* Responsive */
 @media (max-width: 600px) {

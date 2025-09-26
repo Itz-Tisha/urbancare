@@ -54,6 +54,10 @@
     <button type="submit" class="btn btn-primary">Signup</button>
 </form>
 
+<p style="text-align:center; margin-top:12px">
+    <a asp-controller="Account" asp-action="ChooseRole">Choose a different role</a>
+</p>
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

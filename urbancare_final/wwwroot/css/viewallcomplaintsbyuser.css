@@ -81,6 +81,10 @@ table.table td .btn + .btn { margin-left: 8px; }
     table.table tbody tr { padding: 16px 18px; }
 }
 
+/* Complaint image + statement text */
+.complaint-photo { width: 200px; height: 140px; object-fit: cover; border-radius: 12px; border: 1px solid var(--vcu-border); box-shadow: 0 8px 20px rgba(2,6,23,0.10); display: block; margin-bottom: 10px; }
+.statement-text { white-space: normal; word-break: break-word; overflow-wrap: anywhere; }
+
 /* Root variables */
 :root {
     --bg: #f7f9fc;

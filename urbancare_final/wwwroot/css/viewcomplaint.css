@@ -91,4 +91,8 @@ table.table .btn.btn-primary:active { transform: translateY(0); filter: brightne
     table.table tbody tr { padding: 16px 18px; }
 }
 
+/* Complaint image + statement text */
+.complaint-photo { width: 140px; height: 100px; object-fit: cover; border-radius: 10px; border: 1px solid var(--vcmp-border); box-shadow: 0 6px 16px rgba(2,6,23,0.08); display: block; margin-bottom: 10px; }
+.statement-text { white-space: normal; word-break: break-word; overflow-wrap: anywhere; }
+
 

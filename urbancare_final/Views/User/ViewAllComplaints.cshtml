@@ -19,7 +19,14 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Statement</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Photo))
+                    {
+                        var path = item.Photo?.TrimStart('~','/');
+                        <img src="@Url.Content($"~/{path}")" alt="Complaint photo" class="complaint-photo" />
+                    }
+                    <div class="statement-text">@item.Statement</div>
+                </td>
                 <td>@item.ProblemType</td>
                 <td>@item.DateSubmitted.ToShortDateString()</td>
                 <td>@item.DepartmentMaster?.Name</td>

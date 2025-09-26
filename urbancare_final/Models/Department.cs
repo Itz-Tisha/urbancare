@@ -32,5 +32,6 @@ namespace urbancare_final.Models
         public ICollection<Problem> Problems { get; set; }
 
         public ICollection<Resolution> Resolutions { get; set; }
+        public string Photo { get; internal set; }
     }
 }

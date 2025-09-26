@@ -1,27 +1,4 @@
-﻿@* @model urbancare_final.ViewModels.HomeViewModel
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<link rel="stylesheet" href="~/css/index.css" />
-
-<h2 class="welcome-text">Welcome, @User.Identity.Name!</h2>
-
-@if (User.IsInRole("Citizen") && Model.User != null)
-{
-    <div class="profile-card">
-        <p><strong>Name:</strong> @Model.User.Name</p>
-        <p><strong>Email:</strong> @Model.User.Email</p>
-    </div>
-}
-else if (User.IsInRole("Department") && Model.Department != null)
-{
-    <div class="profile-card">
-        <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
-        <p><strong>Email:</strong> @Model.Department.Email</p>
-        <p><strong>City:</strong> @Model.Department.City</p>
-        <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
-    </div>
-}
+﻿
 
 
 @model urbancare_final.ViewModels.HomeViewModel
@@ -30,128 +7,23 @@ else if (User.IsInRole("Department") && Model.Department != null)
 }
 <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 
-<section class="hero-section">
-    <h2 class="welcome-text">Welcome, @User.Identity.Name!</h2>
-    <p class="hero-subtext">Explore UrbanCare services and manage your profile efficiently.</p>
 
-    @if (User.IsInRole("Citizen") && Model.User != null)
-    {
-        <div class="profile-card">
-            <p><strong>Name:</strong> @Model.User.Name</p>
-            <p><strong>Email:</strong> @Model.User.Email</p>
-        </div>
-    }
-    else if (User.IsInRole("Department") && Model.Department != null)
-    {
-        <div class="profile-card">
-            <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
-            <p><strong>Email:</strong> @Model.Department.Email</p>
-            <p><strong>City:</strong> @Model.Department.City</p>
-            <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
-        </div>
-    }
-</section>
 
 <section id="features" class="features-section">
     <h2>Features</h2>
     <div class="feature-cards">
         <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=256&auto=format&fit=crop" alt="Profile" />
             <h3>Profile Management</h3>
             <p>Update your details easily and securely.</p>
         </div>
         <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=256&auto=format&fit=crop" alt="Requests" />
             <h3>Service Requests</h3>
             <p>Raise and track requests quickly.</p>
         </div>
         <div class="feature-card">
-            <h3>Notifications</h3>
-            <p>Get instant updates on all activities.</p>
-        </div>
-    </div>
-</section>
-
-<section id="about" class="about-section">
-    <h2>About Us</h2>
-    <p>
-        UrbanCare is a modern platform connecting citizens with government departments. We aim
-        to make service management easy, fast, and reliable for everyone.
-    </p>
-</section>
-
-<section id="contact" class="contact-section">
-    <h2>Contact</h2>
-    <p>Email: support@urbancare.com | Phone: +91 12345 67890</p>
-</section> *@
-
-
-
-
-@* @model urbancare_final.ViewModels.HomeViewModel
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<link rel="stylesheet" href="~/css/index.css" />
-
-<h2 class="welcome-text">Welcome, @User.Identity.Name!</h2>
-
-@if (User.IsInRole("Citizen") && Model.User != null)
-{
-    <div class="profile-card">
-        <p><strong>Name:</strong> @Model.User.Name</p>
-        <p><strong>Email:</strong> @Model.User.Email</p>
-    </div>
-}
-else if (User.IsInRole("Department") && Model.Department != null)
-{
-    <div class="profile-card">
-        <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
-        <p><strong>Email:</strong> @Model.Department.Email</p>
-        <p><strong>City:</strong> @Model.Department.City</p>
-        <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
-    </div>
-} *@
-
-
-@model urbancare_final.ViewModels.HomeViewModel
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
-
-<section class="hero-section">
-    <h2 class="welcome-text">Welcome, @User.Identity.Name!</h2>
-    <p class="hero-subtext">Explore UrbanCare services and manage your profile efficiently.</p>
-
-    @* @if (User.IsInRole("Citizen") && Model.User != null)
-    {
-        <div class="profile-card">
-            <p><strong>Name:</strong> @Model.User.Name</p>
-            <p><strong>Email:</strong> @Model.User.Email</p>
-        </div>
-    }
-    else if (User.IsInRole("Department") && Model.Department != null)
-    {
-        <div class="profile-card">
-            <p><strong>Department Name:</strong> @Model.Department.DepartmentMaster?.Name</p>
-            <p><strong>Email:</strong> @Model.Department.Email</p>
-            <p><strong>City:</strong> @Model.Department.City</p>
-            <p><strong>Zip Code:</strong> @Model.Department.ZipCode</p>
-        </div>
-    } *@
-</section>
-
-<section id="features" class="features-section">
-    <h2>Features</h2>
-    <div class="feature-cards">
-        <div class="feature-card">
-            <h3>Profile Management</h3>
-            <p>Update your details easily and securely.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Service Requests</h3>
-            <p>Raise and track requests quickly.</p>
-        </div>
-        <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=256&auto=format&fit=crop" alt="Notifications" />
             <h3>Notifications</h3>
             <p>Get instant updates on all activities.</p>
         </div>
@@ -192,12 +64,18 @@ else if (User.IsInRole("Department") && Model.Department != null)
     <h2>What citizens say</h2>
     <div class="testimonials">
         <div class="testimonial-card">
-            <p>“Submitting a request took less than two minutes and I got updates instantly.”</p>
-            <div class="testimonial-author">— A. Sharma</div>
+            <div class="avatar"></div>
+            <div class="content">
+                <p>“Submitting a request took less than two minutes and I got updates instantly.”</p>
+                <div class="author">— A. Sharma</div>
+            </div>
         </div>
         <div class="testimonial-card">
-            <p>“The interface is clean and everything I need is easy to find.”</p>
-            <div class="testimonial-author">— R. Kumar</div>
+            <div class="avatar"></div>
+            <div class="content">
+                <p>“The interface is clean and everything I need is easy to find.”</p>
+                <div class="author">— R. Kumar</div>
+            </div>
         </div>
     </div>
 </section>
@@ -205,12 +83,41 @@ else if (User.IsInRole("Department") && Model.Department != null)
 <section id="about" class="about-section">
     <h2>About Us</h2>
     <p>
-        UrbanCare is a modern platform connecting citizens with government departments. We aim
-        to make service management easy, fast, and reliable for everyone.
+        UrbanCare connects citizens with government departments to make service management easy,
+        fast, and reliable for everyone.
     </p>
+    <ul>
+        <li>Unified portal for complaints and resolutions</li>
+        <li>Transparent tracking with timely notifications</li>
+        <li>Data-driven insights for better civic services</li>
+    </ul>
+
+    <div class="media-grid">
+        <div class="media-card">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600&auto=format&fit=crop" alt="Team" />
+            <div class="caption">Our team works with departments to resolve issues quickly.</div>
+        </div>
+        <div class="media-card">
+            <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=600&auto=format&fit=crop" alt="City" />
+            <div class="caption">Built for cities of all sizes.</div>
+        </div>
+        <div class="media-card">
+            <img src="https://images.unsplash.com/photo-1520975922203-b4ea66ec57bb?q=80&w=600&auto=format&fit=crop" alt="Support" />
+            <div class="caption">24/7 support to assist citizens and departments.</div>
+        </div>
+    </div>
 </section>
 
 <section id="contact" class="contact-section">
     <h2>Contact</h2>
-    <p>Email: support@urbancare.com | Phone: +91 12345 67890</p>
+    <div class="contact-grid">
+        <div class="contact-card">
+            <p>Email: support@urbancare.com</p>
+            <p>Phone: +91 12345 67890</p>
+            <p>Address: 221B Baker Street, Mumbai</p>
+        </div>
+        <div class="contact-map">
+            <img src="https://images.unsplash.com/photo-1502920514313-52581002a659?q=80&w=1200&auto=format&fit=crop" alt="Map placeholder" />
+        </div>
+    </div>
 </section>

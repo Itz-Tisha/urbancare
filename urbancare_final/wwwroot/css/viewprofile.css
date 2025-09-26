@@ -98,5 +98,10 @@
 @media (max-width: 640px) {
     .profile-row { grid-template-columns: 120px 1fr; }
 }
-
-
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}

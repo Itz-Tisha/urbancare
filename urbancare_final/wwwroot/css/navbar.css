@@ -22,6 +22,21 @@ header .navbar .navbar-brand {
     letter-spacing: -0.01em;
 }
 
+/* Explicitly override Bootstrap navbar-light link colors */
+header .navbar.navbar-light .navbar-nav .nav-link,
+header .navbar .navbar-nav .nav-link {
+    color: var(--nb-muted) !important;
+    padding: 10px 12px !important;
+    border-radius: 8px;
+}
+header .navbar.navbar-light .navbar-nav .nav-link:hover,
+header .navbar .navbar-nav .nav-link:hover,
+header .navbar .navbar-nav .nav-link:focus {
+    color: var(--nb-primary) !important;
+    background-color: var(--nb-hover) !important;
+}
+header .navbar .navbar-nav .nav-link.active { color: var(--nb-primary) !important; font-weight: 600 !important; }
+
 /* Links */
 header .navbar .nav-link,
 header .navbar a.nav-link:link,
@@ -47,6 +62,32 @@ header .navbar .navbar-toggler-icon { filter: contrast(0.5); }
 
 /* Logout button alignment */
 header .navbar .btn { vertical-align: middle; }
+
+/* Enforce consistent logout button look across pages */
+header .navbar .btn { 
+    border-radius: 12px !important; 
+    padding: 10px 14px !important; 
+    line-height: 1 !important; 
+    font-weight: 700 !important; 
+}
+header .navbar .btn.btn-sm { padding: 8px 12px !important; font-size: 14px !important; }
+
+/* Outline-danger normalized to the same red across pages */
+header .navbar .btn.btn-outline-danger {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    background: linear-gradient(180deg, #ef4444, #dc2626) !important; /* filled by default */
+    border-color: #dc2626 !important;
+}
+header .navbar .btn.btn-outline-danger:hover,
+header .navbar .btn.btn-outline-danger:focus {
+    filter: brightness(1.03) !important;
+}
+header .navbar .btn.btn-outline-danger:active {
+    filter: brightness(0.98) !important;
+}
 
 /* Navbar global styles */
 .navbar {
