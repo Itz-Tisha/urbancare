@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using urbancare_final.Models;
 
 namespace urbancare_final.Repos.Interfaces
@@ -11,5 +12,12 @@ namespace urbancare_final.Repos.Interfaces
         void UpdateCitizen(User user);
         void UpdateDepartment(Department department);
         Task SaveAsync();
+
+        public bool IsEmailExists(string email);
+
+        bool CitizenEmailExists(string email, int excludeId);
+        bool DepartmentEmailExists(string email, int excludeId);
+
+
     }
 }

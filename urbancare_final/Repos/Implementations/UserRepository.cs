@@ -149,6 +149,11 @@ namespace urbancare_final.Repos.Implementations
             return _context.DepartmentMasters.Any(d => d.Id == departmentId);
         }
 
+        public Department GetDepartmentByPincode(int pincode, string city)
+        {
+            return _context.Departments
+                .FirstOrDefault(d => d.ZipCode == pincode && d.City.ToLower() == city.ToLower());
+        }
 
 
     }

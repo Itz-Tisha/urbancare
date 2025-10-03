@@ -48,5 +48,23 @@ namespace urbancare_final.Repos.Implementations
             await _context.SaveChangesAsync();
         }
 
+        public bool IsEmailExists(string email)
+        {
+            return _context.Users.Any(u => u.Email == email )
+                   || _context.Departments.Any(d => d.Email == email);
+        }
+
+
+        public bool CitizenEmailExists(string email, int excludeId)
+        {
+            return _context.Users.Any(u => u.Email == email && u.Id != excludeId);
+        }
+
+        public bool DepartmentEmailExists(string email, int excludeId)
+        {
+            return _context.Departments.Any(d => d.Email == email && d.Id != excludeId);
+        }
+
+
     }
 }

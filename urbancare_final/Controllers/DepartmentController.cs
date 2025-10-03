@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Security.Claims;
 using urbancare_final.Models;
 using urbancare_final.Models.ViewModels;
 using urbancare_final.Repos.Interfaces;
@@ -23,10 +24,10 @@ namespace urbancare_final.Controllers
 
         public IActionResult ViewComplaint()
         {
+            
+            string email = User.FindFirst(ClaimTypes.Email)?.Value; 
+
            
-            string email = User.Identity.Name;
-
-
             var department = _deptRepo.DepartmentuserByEmail(email);            
 
             if (department == null)
@@ -60,8 +61,8 @@ namespace urbancare_final.Controllers
             {
                 return View(model);
             }
-
-            string email = User.Identity.Name;
+            string email = User.FindFirst(ClaimTypes.Email)?.Value;
+           
             var department = _deptRepo.DepartmentuserByEmail(email);
 
             if (department == null)

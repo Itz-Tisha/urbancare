@@ -58,6 +58,9 @@
     <a asp-controller="Account" asp-action="ChooseRole">Choose a different role</a>
 </p>
 
+<div asp-validation-summary="All" class="text-danger"></div>
+
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

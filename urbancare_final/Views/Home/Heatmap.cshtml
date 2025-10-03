@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Problem Heatmap";
+}
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+<div id="map" style="height:600px;width:100%;"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+            var map = L.map('map').setView([22.6943, 72.8610], 13); // center on city
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    fetch('/Home/GetProblemLocations')
+        .then(res => res.json())
+        .then(data => {
+            // Map to heat points: [lat, lng, intensity]
+            const heatPoints = data.map(d => [d.lat, d.lng, d.intensity]);
+            L.heatLayer(heatPoints, { radius: 25, blur: 15, maxZoom: 17 }).addTo(map);
+
+            // Add markers with popup for each problem
+            data.forEach(d => {
+                d.problems.forEach(p => {
+                    let popup = `<strong>${p.Statement}</strong><br/>Type: ${p.ProblemType}<br/>`;
+                    if (p.Photo) popup += `<b>Citizen Photo:</b><br/><img src="${p.Photo}" width="120"/><br/>`;
+                    if (p.resolvedPhoto) popup += `<b>Resolved:</b><br/><img src="${p.resolvedPhoto}" width="120"/><br/>${p.resolvedDesc || ""}`;
+                    L.marker([d.lat, d.lng]).addTo(map).bindPopup(popup);
+                });
+            });
+        });
+
+    });
+</script>

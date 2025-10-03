@@ -89,7 +89,7 @@ namespace urbancare_final.Controllers
                     Password = model.Password,
                     DepartmentMasterId = model.DepartmentMasterId,
                     City = model.City,
-                    ZipCode = model.ZipCode
+                    ZipCode = (int)model.ZipCode
                 };
                 _repo.AddDepartment(dept);
             }

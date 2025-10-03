@@ -1,13 +1,41 @@
-﻿
+
 
 
 @model urbancare_final.ViewModels.HomeViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+  
 
 
+
+
+<section class="intro-split">
+    <div class="intro-image">
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop" alt="UrbanCare citizen services" />
+    </div>
+    <div class="intro-content">
+        <div class="intro-eyebrow">Built for Smart Cities</div>
+        <h1>Resolve civic issues faster with <span class="grad-text">UrbanCare</span></h1>
+        <p class="intro-lead">Submit requests in minutes, track SLAs, and stay informed with real-time updates — all from one modern portal.</p>
+        <ul class="intro-points">
+            <li><span class="check"></span> 2-minute request submission</li>
+            <li><span class="check"></span> Live status and instant notifications</li>
+            <li><span class="check"></span> Smart routing to the right department</li>
+        </ul>
+        <div class="trust-row">
+            <div class="trust-item"><strong>12k+</strong><span>Active citizens</span></div>
+            <div class="trust-item"><strong>850+</strong><span>Requests resolved</span></div>
+            <div class="trust-item"><strong>24/7</strong><span>Support</span></div>
+        </div>
+        <div class="intro-actions">
+           
+         
+            <a href="/Home/ViewProfile" class="btn btn-ghost">View Profile</a>
+        </div>
+    </div>
+</section>
 
 <section id="features" class="features-section">
     <h2>Features</h2>
@@ -30,7 +58,7 @@
     </div>
 </section>
 
-<section class="stats-section">
+@* <section class="stats-section">
     <div class="stat-card">
         <div class="stat-value">12k+</div>
         <div class="stat-label">Active Citizens</div>
@@ -47,7 +75,7 @@
         <div class="stat-value">15</div>
         <div class="stat-label">Departments Onboarded</div>
     </div>
-</section>
+</section> *@
 
 <section class="cta-section">
     <div>

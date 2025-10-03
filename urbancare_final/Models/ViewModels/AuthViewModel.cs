@@ -15,7 +15,12 @@ namespace urbancare_final.Models.ViewModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+      
+        [Required(ErrorMessage = "Password is required")]
+        [StringLength(20, MinimumLength = 6,
+          ErrorMessage = "Password must be between 6 and 20 characters.")]
+        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).+$",
+          ErrorMessage = "Password must contain at least one uppercase, one lowercase, one digit, and one special character.")]
         public string Password { get; set; }
 
         public int DepartmentMasterId { get; set; }
@@ -23,6 +28,11 @@ namespace urbancare_final.Models.ViewModels
         public List<DepartmentMaster> DepartmentOptions { get; set; }
 
         public string City { get; set; }
-        public int ZipCode { get; set; }
+     
+
+        [Range(100000, 999999, ErrorMessage = "Pincode must be exactly 6 digits.")]
+        public int? ZipCode { get; set; }   
+
+
     }
 }

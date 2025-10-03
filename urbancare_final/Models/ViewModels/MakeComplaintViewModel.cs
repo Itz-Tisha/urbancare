@@ -20,7 +20,13 @@ namespace urbancare_final.Models.ViewModels
         public int DepartmentId { get; set; }
 
         public string city { get; set; }
-        public int pincode {  get; set; }
+    
+
+
+        [Required]
+        [Range(100000, 999999, ErrorMessage = "Pincode must be exactly 6 digits.")]
+        public int pincode { get; set; }
+
 
         public List<SelectListItem> DepartmentList { get; set; }
 

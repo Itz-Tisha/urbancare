@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Department Not Available";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4 text-center">
+        <h2 class="text-danger">Department Not Available</h2>
+        <p class="mt-3">
+            Sorry, no department is available for the entered pincode:
+            <strong>@ViewBag.Pincode</strong>.
+        </p>
+
+        <div class="mt-4">
+            <a asp-action="MakeComplaint" asp-controller="User" class="btn btn-primary">
+                Try Again
+            </a>
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary ms-2">
+                Go to Home
+            </a>
+        </div>
+    </div>
+</div>

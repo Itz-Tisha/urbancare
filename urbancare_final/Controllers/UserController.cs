@@ -25,56 +25,6 @@ namespace urbancare_final.Controllers
 
 
 
-        [HttpGet]
-        public IActionResult MakeComplaint()
-        {
-            var model = new MakeComplaintViewModel
-            {
-                DepartmentList = _userRepo.GetDepartmentsForDropdown()
-            };
-
-            return View(model);
-        }
-
-        [Authorize]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult MakeComplaint(MakeComplaintViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                model.DepartmentList = _userRepo.GetDepartmentsForDropdown();
-                return View(model);
-            }
-
-            var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
-
-            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int currentUserId))
-            {
-                return Unauthorized();
-            }
-
-            var problem = new Problem
-            {
-                Statement = model.Statement,
-                ProblemType = model.ProblemType,
-                DepartmentMasterId = model.DepartmentId,
-                UserId = currentUserId,
-                DateSubmitted = DateTime.Now,
-                city = model.city,
-                pincode = model.pincode
-            };
-
-            if (model.PhotoFile != null && model.PhotoFile.Length > 0)
-            {
-                problem.Photo = SaveFile(model.PhotoFile);
-            }
-
-            _userRepo.make_complaints(problem);
-
-            return RedirectToAction("Index", "Home");
-        }
-
         public IActionResult Resolutions()
         {
             var resolutions = _userRepo.GetResolutions();
@@ -187,6 +137,9 @@ namespace urbancare_final.Controllers
             return View(complaint);
         }
 
+      
+
+
         [Authorize(Roles = "Citizen")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -198,6 +151,20 @@ namespace urbancare_final.Controllers
                 return View(model);
             }
 
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int currentUserId))
+            {
+                return Unauthorized();
+            }
+
+            var complaint = _userRepo.GetComplaintById(model.Id);
+
+            if (complaint == null || complaint.UserId != currentUserId)
+            {
+                return Unauthorized();
+            }
+
+          
             if (!_userRepo.DepartmentExists(model.DepartmentMasterId))
             {
                 ModelState.AddModelError("DepartmentMasterId", "Selected department does not exist.");
@@ -205,12 +172,12 @@ namespace urbancare_final.Controllers
                 return View(model);
             }
 
-            var complaint = _userRepo.GetComplaintById(model.Id);
-            if (complaint == null) return NotFound();
-
             complaint.Statement = model.Statement;
             complaint.ProblemType = model.ProblemType;
             complaint.DepartmentMasterId = model.DepartmentMasterId;
+            complaint.city = model.city;
+            complaint.pincode = model.pincode;
+           
 
             if (PhotoFile != null && PhotoFile.Length > 0)
             {
@@ -220,6 +187,73 @@ namespace urbancare_final.Controllers
             _userRepo.UpdateComplaint(complaint);
 
             return RedirectToAction("ViewAllComplaintsByUser");
+        }
+
+
+
+        [HttpGet]
+        public IActionResult MakeComplaint()
+        {
+            var model = new MakeComplaintViewModel
+            {
+                DepartmentList = _userRepo.GetDepartmentsForDropdown()
+            };
+
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult MakeComplaint(MakeComplaintViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                model.DepartmentList = _userRepo.GetDepartmentsForDropdown();
+                return View(model);
+            }
+
+            var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int currentUserId))
+            {
+                return Unauthorized();
+            }
+
+            var department = _userRepo.GetDepartmentByPincode(model.pincode,model.city);
+
+            if (department == null )
+            {
+               
+                return RedirectToAction("DepartmentNotAvailable", new { pincode = model.pincode });
+            }
+
+         
+            var problem = new Problem
+            {
+                Statement = model.Statement,
+                ProblemType = model.ProblemType,
+                DepartmentMasterId = model.DepartmentId, 
+                UserId = currentUserId,
+                DateSubmitted = DateTime.Now,
+                city = model.city,
+                pincode = model.pincode
+            };
+
+            if (model.PhotoFile != null && model.PhotoFile.Length > 0)
+            {
+                problem.Photo = SaveFile(model.PhotoFile);
+            }
+
+            _userRepo.make_complaints(problem);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult DepartmentNotAvailable(int pincode)
+        {
+            ViewBag.Pincode = pincode;
+            return View();
         }
 
 

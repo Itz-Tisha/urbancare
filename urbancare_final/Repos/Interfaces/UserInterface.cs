@@ -33,5 +33,7 @@ namespace urbancare_final.Repos.Interfaces
         void UpdateComplaint(Problem complaint);
         bool DepartmentExists(int departmentId);
 
+        Department GetDepartmentByPincode(int pincode, string city);
+
     }
 }

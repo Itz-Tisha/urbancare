@@ -22,13 +22,22 @@ namespace urbancare_final.Models
         public DepartmentMaster DepartmentMaster { get; set; }
 
         public string city {  get; set; }
-        public int pincode {  get; set; }
+     
+
+
+        [Required]
+        [Range(100000, 999999, ErrorMessage = "Pincode must be exactly 6 digits.")]
+        public int pincode { get; set; }
+
 
         public ICollection<Resolution> Resolutions { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         public DateTime DateSubmitted { get; set; } = DateTime.Now;
+
+
+       
 
     }
 }
