@@ -39,7 +39,8 @@ namespace urbancare_final.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
@@ -88,6 +89,31 @@ namespace urbancare_final.Migrations
                         {
                             Id = 3,
                             Name = "Electricity"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Health"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Public Works"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Transportation"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Education"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Others"
                         });
                 });
 
@@ -106,12 +132,6 @@ namespace urbancare_final.Migrations
 
                     b.Property<int>("DepartmentMasterId")
                         .HasColumnType("int");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("float");
 
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
@@ -195,7 +215,8 @@ namespace urbancare_final.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");

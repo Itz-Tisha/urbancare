@@ -10,8 +10,8 @@ using urbancare_final.Models;
 namespace urbancare_final.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250920163600_Addcitypincode")]
-    partial class Addcitypincode
+    [Migration("20251004165007_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,11 +41,14 @@ namespace urbancare_final.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ZipCode")
+                        .HasColumnType("int");
 
                     b.Property<string>("user_Name")
                         .IsRequired()
@@ -189,6 +192,10 @@ namespace urbancare_final.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

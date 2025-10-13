@@ -14,10 +14,10 @@ namespace urbancare_final.Models
         [Required]
         public int DepartmentMasterId { get; set; }
 
-        [ForeignKey("DepartmentMasterId")]
+       
         public DepartmentMaster DepartmentMaster { get; set; }
 
-        [Required]
+        [Required, EmailAddress]
         public string Email { get; set; }
 
 

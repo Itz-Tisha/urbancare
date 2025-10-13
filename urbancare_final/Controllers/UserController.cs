@@ -23,16 +23,6 @@ namespace urbancare_final.Controllers
             _userRepo = userRepo;
         }
 
-
-
-        public IActionResult Resolutions()
-        {
-            var resolutions = _userRepo.GetResolutions();
-            return View(resolutions);
-        }
-
-
-
         private string SaveFile(IFormFile photoFile)
         {
             if (photoFile == null || photoFile.Length == 0)

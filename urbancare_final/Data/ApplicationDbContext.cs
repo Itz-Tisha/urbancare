@@ -60,7 +60,12 @@ namespace urbancare_final.Models
             modelBuilder.Entity<DepartmentMaster>().HasData(
                 new DepartmentMaster { Id = 1, Name = "Sanitation" },
                 new DepartmentMaster { Id = 2, Name = "Water Supply" },
-                new DepartmentMaster { Id = 3, Name = "Electricity" }
+                new DepartmentMaster { Id = 3, Name = "Electricity" },
+                new DepartmentMaster { Id = 4, Name = "Health" },
+                new DepartmentMaster { Id = 5, Name = "Public Works" },
+                new DepartmentMaster { Id = 6, Name = "Transportation" },
+                new DepartmentMaster { Id = 7, Name = "Education" },
+                new DepartmentMaster { Id = 8, Name = "Others" }
             );
         }
 

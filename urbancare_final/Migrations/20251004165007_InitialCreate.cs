@@ -28,7 +28,8 @@ namespace urbancare_final.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false)
+                    Password = table.Column<string>(maxLength: 20, nullable: false),
+                    Photo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -44,9 +45,10 @@ namespace urbancare_final.Migrations
                     user_Name = table.Column<string>(nullable: false),
                     DepartmentMasterId = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    ZipCode = table.Column<string>(nullable: false),
+                    ZipCode = table.Column<int>(nullable: false),
                     City = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false)
+                    Password = table.Column<string>(maxLength: 20, nullable: false),
+                    Photo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,6 +72,9 @@ namespace urbancare_final.Migrations
                     Photo = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false),
                     DepartmentMasterId = table.Column<int>(nullable: false),
+                    city = table.Column<string>(nullable: true),
+                    pincode = table.Column<int>(nullable: false),
+                    DateSubmitted = table.Column<DateTime>(nullable: false),
                     DepartmentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

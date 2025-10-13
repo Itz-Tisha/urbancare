@@ -10,8 +10,8 @@ using urbancare_final.Models;
 namespace urbancare_final.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250918104556_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251009164229_SeedDepartments")]
+    partial class SeedDepartments
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,11 +41,14 @@ namespace urbancare_final.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ZipCode")
+                        .HasColumnType("int");
 
                     b.Property<string>("user_Name")
                         .IsRequired()
@@ -88,6 +91,31 @@ namespace urbancare_final.Migrations
                         {
                             Id = 3,
                             Name = "Electricity"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Health"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Public Works"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Transportation"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Education"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Others"
                         });
                 });
 
@@ -97,6 +125,9 @@ namespace urbancare_final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateSubmitted")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
@@ -116,6 +147,12 @@ namespace urbancare_final.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("city")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("pincode")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -180,6 +217,10 @@ namespace urbancare_final.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
