@@ -34,12 +34,16 @@ It provides a platform for citizens to report city-related issues (like road dam
 
 Follow these steps to run the project locally:
 
-### 1️⃣ Clone the Repository
+
+
+🧭 Step 1 — Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/urbancare.git
+https://github.com/Itz-Tisha/urbancare
+
+ 
 
 
-### 🥈 Open in Visual Studio or VS Code
+### 🥈 Step 2 — Open in Visual Studio or VS Code
 ```bash
 Open the folder in Visual Studio 2019+ or VS Code.
 
