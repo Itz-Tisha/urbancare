@@ -108,7 +108,7 @@ namespace urbancare_final.Repos.Implementations
         .Include(r => r.Problem)
         .Include(r => r.Department)
         .Include(r => r.User)
-        .Where(r => r.UserId == userId && r.ProblemId == id)
+        .Where(r =>  r.ProblemId == id)
         .ToList();
         }
 
